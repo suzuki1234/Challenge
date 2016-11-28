@@ -1,0 +1,4 @@
+このパソコンのスペック
+OS Windows10
+CPU Intel Core i3-5005U
+RAM 4.00G
