@@ -56,6 +56,10 @@
         <servlet-name>kadai12</servlet-name>
         <servlet-class>jdbc.kadai12</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Szaiko</servlet-name>
+        <servlet-class>jdbc.Szaiko</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>JdbcServlet</servlet-name>
         <url-pattern>/JdbcServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>kadai12</servlet-name>
         <url-pattern>/kadai12</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Szaiko</servlet-name>
+        <url-pattern>/Szaiko</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
