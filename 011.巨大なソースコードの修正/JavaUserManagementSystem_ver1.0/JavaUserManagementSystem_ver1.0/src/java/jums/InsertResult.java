@@ -29,10 +29,15 @@ public class InsertResult extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //セッションスタート
-        HttpSession session = request.getSession();
-        
-        try{
+          try{
+            HttpSession session = request.getSession();
+            request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
+            String accesschk = request.getParameter("ac");
+            System.out.println("accesschk : "+accesschk);
+            if(accesschk ==null || (Integer)session.getAttribute("ac")!=Integer.parseInt(accesschk)){
+                throw new Exception("不正なアクセスです");
+            }
+            
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
             userdata.setName((String)session.getAttribute("name"));

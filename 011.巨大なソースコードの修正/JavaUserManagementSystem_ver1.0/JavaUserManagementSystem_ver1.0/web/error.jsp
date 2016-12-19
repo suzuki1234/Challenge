@@ -1,3 +1,4 @@
+<%@page import="jums.JumsHelper" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,5 +9,7 @@
     <body>
         エラーが発生しました。以下の項目を確認してください。<br>
         <%=request.getAttribute("error")%>
+        <br>
+        <%=JumsHelper.getInstance().home()%>
     </body>
 </html>

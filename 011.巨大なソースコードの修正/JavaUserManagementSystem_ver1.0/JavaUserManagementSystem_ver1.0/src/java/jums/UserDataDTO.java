@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * ユーザー情報を持ちまわるJavaBeans
+ * ユーザー情報を持ちまわるJavaBeans　　//JavaBeansではないのでは・・・？
  * データベースのカラムと型に対応させている(DTO)。データの挿入、取り出しどちらにも便利
  * @version 1.00
  * @author hayashi-s

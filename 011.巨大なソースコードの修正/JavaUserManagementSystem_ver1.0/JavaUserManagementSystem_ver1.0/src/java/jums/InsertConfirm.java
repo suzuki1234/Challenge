@@ -43,14 +43,11 @@ public class InsertConfirm extends HttpServlet {
             String tell = request.getParameter("tell");
             String comment = request.getParameter("comment");
 
+            //UDBに格納
+            UserDataBeans udb = new UserDataBeans(name, year, month, day, type, tell, comment);
+            
             //セッションに格納
-            session.setAttribute("name", name);
-            session.setAttribute("year", year);
-            session.setAttribute("month",month);
-            session.setAttribute("day", day);
-            session.setAttribute("type", type);
-            session.setAttribute("tell", tell);
-            session.setAttribute("comment", comment);
+            session.setAttribute("UDB", udb);
             System.out.println("Session updated!!");
             
             request.getRequestDispatcher("/insertconfirm.jsp").forward(request, response);
