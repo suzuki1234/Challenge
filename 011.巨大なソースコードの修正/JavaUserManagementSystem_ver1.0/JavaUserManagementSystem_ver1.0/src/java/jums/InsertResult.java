@@ -40,12 +40,8 @@ public class InsertResult extends HttpServlet {
             
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
-            userdata.setName((String)session.getAttribute("name"));
-            Calendar birthday = Calendar.getInstance();
-            userdata.setBirthday(birthday.getTime());
-            userdata.setType(Integer.parseInt((String)session.getAttribute("type")));
-            userdata.setTell((String)session.getAttribute("tell"));
-            userdata.setComment((String)session.getAttribute("comment"));
+            UserDataBeans udb = (UserDataBeans)session.getAttribute("UDB");
+            userdata = udb.makeUD();
             
             //DBへデータの挿入
             UserDataDAO .getInstance().insert(userdata);

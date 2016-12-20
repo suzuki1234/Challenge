@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 public class UserDataDAO {
     
     //インスタンスオブジェクトを返却させてコードの簡略化
@@ -30,7 +32,32 @@ public class UserDataDAO {
             con = DBManager.getConnection();
             st =  con.prepareStatement("INSERT INTO user_t(name,birthday,tell,type,comment,newDate) VALUES(?,?,?,?,?,?)");
             st.setString(1, ud.getName());
-            st.setDate(2, new java.sql.Date(System.currentTimeMillis()));//指定のタイムスタンプ値からSQL格納用のDATE型に変更
+            
+            Calendar cal1 =  Calendar.getInstance() ;  //(1)オブジェクトの生成
+            
+            SimpleDateFormat format1 = new SimpleDateFormat("yyyy");
+	    String yyyyFormat = format1.format( ud.getBirthday() );
+	    int yyyy = Integer.parseInt(yyyyFormat);
+            
+            SimpleDateFormat format4 = new SimpleDateFormat("MM");
+	    String MFormat = format4.format( ud.getBirthday() );	    
+	    int mm = Integer.parseInt(MFormat);
+            
+            SimpleDateFormat format3 = new SimpleDateFormat("dd");
+	    String ddFormat = format3.format( ud.getBirthday() );
+	    int dd  = Integer.parseInt(ddFormat);
+
+            cal1.set(yyyy-1, mm-1, dd);
+            
+            System.out.println("-----");
+            
+            System.out.println(ud.getBirthday());
+            System.out.println(yyyyFormat);
+            System.out.println(MFormat);
+            System.out.println(ddFormat);
+            System.out.println("-----");
+            st.setDate(2,new java.sql.Date(cal1.getTimeInMillis()));//指定のタイムスタンプ値からSQL格納用のDATE型に変更
+//            st.setDate(2, new java.sql.Date(System.currentTimeMillis()));//指定のタイムスタンプ値からSQL格納用のDATE型に変更
             st.setString(3, ud.getTell());
             st.setInt(4, ud.getType());
             st.setString(5, ud.getComment());

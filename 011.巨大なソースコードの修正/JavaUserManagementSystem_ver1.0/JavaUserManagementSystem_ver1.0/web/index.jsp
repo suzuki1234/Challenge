@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    //入力途中のデータを破棄
+    HttpSession hs = request.getSession();
+    hs.removeAttribute("UDB");
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
